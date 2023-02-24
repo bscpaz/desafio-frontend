@@ -1,0 +1,22 @@
+{
+	"name": "Angular Desafio Dev",
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:0-18-bullseye",
+	"customizations": {
+		"vscode": {
+			"settings": {},
+			"extensions": [
+				"dbaeumer.vscode-eslint",      
+        "johnpapa.angular2"
+			]
+		}
+	},
+	"portsAttributes": {
+		"9000": {
+			"label": "Hello Remote World",
+			"onAutoForward": "notify"
+		}
+	},
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "yarn install"
+}
