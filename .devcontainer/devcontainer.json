@@ -6,7 +6,8 @@
 			"settings": {},
 			"extensions": [
 				"dbaeumer.vscode-eslint",      
-        "johnpapa.angular2"
+				"johnpapa.angular2",
+				"rangav.vscode-thunder-client"
 			]
 		}
 	},
