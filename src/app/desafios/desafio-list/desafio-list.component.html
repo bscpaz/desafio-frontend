@@ -11,7 +11,7 @@
     </form>
 </div>
 <ol class="list-group-item row">
-    <li *ngFor="let desafio of (desafios | searchByFilter: filter)">
+    <li *ngFor="let desafio of desafios">
         <ap-desafio
             [pergunta]="desafio.pergunta"
             [resposta]="desafio.resposta">

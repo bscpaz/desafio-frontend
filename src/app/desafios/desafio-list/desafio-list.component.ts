@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators'; 
 
 import { DesafioService } from '../desafio.service';
 import { Desafio } from '../desafio/desafio';
@@ -8,20 +9,27 @@ import { Desafio } from '../desafio/desafio';
   selector: 'app-desafio-list',
   templateUrl: './desafio-list.component.html'
 })
-export class DesafioListComponent implements OnInit {
+export class DesafioListComponent implements OnInit, OnDestroy {
 
-  filter: string = '';
   desafios: Desafio[] = [];
   debounce: Subject<string> = new Subject<string>();
 
   constructor(private desafioService: DesafioService) {  }
 
   ngOnInit(): void {
-    this.debounce.subscribe(filter => this.filter = filter);
+    this.debounce
+      .pipe(debounceTime(300)) //Ignore frantic request until 300 miliseconds.
+      .subscribe(filter => {
+        this.search(filter);
+    });
   }
 
-  search(): void {
-    this.desafioService.searchByPergunta(this.filter)
+  ngOnDestroy(): void {
+    this.debounce.unsubscribe();
+  }
+
+  search(filter: string): void {
+    this.desafioService.searchByPergunta(filter)
       .subscribe(dados => {
         this.desafios = dados;
       });
