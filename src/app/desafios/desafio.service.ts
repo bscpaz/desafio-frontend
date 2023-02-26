@@ -14,6 +14,7 @@ export class DesafioService {
   }
 
   searchByPergunta(pergunta: string) {
+    console.log("Enviando " + pergunta);
     return this.http.get<Desafio[]>(API + "desafios/" + pergunta);
   }
 }
