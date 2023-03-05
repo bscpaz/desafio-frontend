@@ -1,6 +1,7 @@
 {
-	"name": "Angular Desafio Dev",
+	"name": "Desafio Frontend",
 	"image": "mcr.microsoft.com/devcontainers/javascript-node:0-18-bullseye",
+	"runArgs": ["--name", "desafio_frontend"],
 	"customizations": {
 		"vscode": {
 			"settings": {},
@@ -13,7 +14,7 @@
 	},
 	"portsAttributes": {
 		"9000": {
-			"label": "Hello Remote World",
+			"label": "Hello Remote Desafio Frontend",
 			"onAutoForward": "notify"
 		}
 	},
